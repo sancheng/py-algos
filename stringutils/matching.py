@@ -36,9 +36,27 @@ def zmatch(text,pattern):
     return -1
 
 
-#test
 
-print zmatch('yubcdetyuiopre','cde')
+def hashmatch(text,pattern):
+    if len(text) == 0 or len(pattern) > len(text):
+        return -1
+    window = text[0:len(pattern)]
+    s = set()
+    s.add(pattern)
+    i = len(window)
+    while i < len(text):
+        if window in s:
+            return i - len(window)
+        else:
+            window = window[1:] + text[i]
+            i += 1
+    return -1
+
+
+#test
+text,pattern = 'yubcdetyuioprefdaslkjfsalkjf;lsajfksajf;jaslkdf;jalkdsjfsa',';jalx'
+print zmatch(text,pattern)
+print hashmatch(text,pattern)
 
 
 
