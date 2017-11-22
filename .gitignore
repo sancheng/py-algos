@@ -1,0 +1,30 @@
+*.tmp
+*.bak
+*.swp
+.settings/
+.loadpath
+
+# Eclipse Core
+.project
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# locally Mac System file
+.DS_Store
+
+*.class
+
+bin/
+tmp/
+target/
+build/
+
+.idea
+.idea/
+
+*.iml
+
+# ignore testNg output folder
+/test-output/
+/.classpath
