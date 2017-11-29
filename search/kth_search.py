@@ -1,5 +1,6 @@
-
 import random
+import heapq
+
 def kth_samllset_element(list, cmpFunc,k):
     if k<=0 or k >len(list):
         return None
@@ -24,3 +25,25 @@ def kth_samllset_element(list, cmpFunc,k):
         return kth_samllset_element(list[i+2:],cmpFunc,k-i-2)
     else:
         return kth_samllset_element(list[:i+1],cmpFunc,k)
+
+'''
+return result is not necessarily ordered
+'''
+def first_k_smallest_elements(list,k):
+    if len(list) <= k:
+        return list + []
+    h = []
+
+    for e in list:
+        if len(h) < k:
+            heapq.heappush(h,-1*e)
+        else:
+            if -1*e < h[0]:
+                continue
+            else:
+                heapq.heappushpop(h,-1*e)
+
+    return [-1*x for x in h]
+
+#
+print first_k_smallest_elements([32,13,11,4,22,12,6,12,7,34,267],3)
